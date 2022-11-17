@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,40 +9,33 @@ namespace TeDoen
 {
     internal class TEDoen
     {
-        int autoId;
+        int autoId = 0;
 
         public int Id;
-        public DateTime? Tijdstip;
+        public DateTime? Tijdstip = null;
         public string Titel;
-        public string[] Informatie;
+        public string[] Informatie = new string[0];
 
         public TEDoen(DateTime? tijd, string titel, string[] informatie)
         {
             autoId++;
             Id = autoId;
-
-            if (tijd != null)
-            {
-                Tijdstip = tijd;
-            }
-            else
-            {
-                Tijdstip = null;
-            }
-
+            Tijdstip = tijd;
             Titel = titel;
             Informatie = informatie;
         }
 
         public override string ToString()
         {
-            return Titel.ToString();
+            return Titel.ToString() + " | " + Tijdstip.ToString();
         }
 
         public void Meedelen(string titel, string[] inhoud, bool dringend)
         {
-            Titel = titel;
-            Informatie = inhoud;
+            //Titel = titel;
+            //Informatie = inhoud;
+            titel = Titel;
+            inhoud = Informatie;
 
             if (Tijdstip == null)
             {
